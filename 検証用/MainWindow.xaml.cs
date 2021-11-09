@@ -22,15 +22,34 @@ namespace 検証用
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            //OverLay overlay = new OverLay();
+            //overlay.Show();
         }
 
-        // フラグの初期化
+        // フラグ等の初期化
+        public static double Dpi_Factor = 10;
         public string SingleOrDouble = "Single";
+        //OverLay overlay = new OverLay();
+
+        public void GetDpiFactorAndShowOverLay(object sender, RoutedEventArgs e)
+        {
+            // 起動時にDPI倍率を取得し、注視点表示用のオーバーレイを表示するための関数
+            // 本来は起動中常に調べて、いつ倍率を変えても正常にマウス操作が出来るようにしたいが、
+            // GetDpiFactor()をTaskに渡したOnGazePoint()から上手く呼び出せないため保留
+            Window mainwindow = System.Windows.Application.Current.MainWindow;
+            Dpi_Factor = PresentationSource.FromVisual(mainwindow).CompositionTarget.TransformFromDevice.M11;
+
+            // オーバーレイ用のウィンドウを表示
+            OverLay overlay = new OverLay();
+            overlay.Owner = mainwindow;
+        }
 
         public class Win32API{
             // Win32APIを.NETから使うために必要な構造体の定義
@@ -104,6 +123,10 @@ namespace 検証用
             [DllImport("User32.Dll")]
             public static extern int GetCursorPos(
                 out POINT lpPoint // POINT構造体　ここに現在のマウス座標が入るのでoutの指定が必要
+                );
+            [DllImport("User32.Dll")]
+            public static extern int GetDpiForWindow(
+                in int hwnd
                 );
 
             // マウス関連関数
@@ -226,8 +249,6 @@ namespace 検証用
             Move_Cursor_Smoothly();
         }
 
-
-
         // 視線捕捉サンプル
         public static class StreamSample
         {
@@ -239,7 +260,7 @@ namespace 検証用
                     Debug.WriteLine($"Gaze point: {gazePoint.position.x}, {gazePoint.position.y}");
                     var w_height = System.Windows.SystemParameters.PrimaryScreenHeight;
                     var w_width = System.Windows.SystemParameters.PrimaryScreenWidth;
-                    Win32API.SetCursorPos((int)(w_width * gazePoint.position.x), (int)(w_height * gazePoint.position.y));
+                    Win32API.SetCursorPos((int)(w_width * gazePoint.position.x / Dpi_Factor), (int)(w_height * gazePoint.position.y / Dpi_Factor));
                 }
             }
 
@@ -269,16 +290,19 @@ namespace 検証用
                 result = Interop.tobii_gaze_point_subscribe(deviceContext, OnGazePoint);
                 Debug.Assert(result == tobii_error_t.TOBII_ERROR_NO_ERROR);
 
-                // This sample will collect 1000 gaze points
-                for (int i = 0; i < 1000; i++)
+                // This sample will collect 10000 gaze points
+                for (int i = 0; i < 10000; i++)
                 {
                     // Optionally block this thread until data is available. Especially useful if running in a separate thread.
                     Interop.tobii_wait_for_callbacks(new[] { deviceContext });
                     Debug.Assert(result == tobii_error_t.TOBII_ERROR_NO_ERROR || result == tobii_error_t.TOBII_ERROR_TIMED_OUT);
 
-                    // Process callbacks on this thread if data is available
-                    Interop.tobii_device_process_callbacks(deviceContext);
-                    Debug.Assert(result == tobii_error_t.TOBII_ERROR_NO_ERROR);
+                    if (i % 10 == 0) //10回に1回だけ読み込む
+                    {
+                        // Process callbacks on this thread if data is available
+                        Interop.tobii_device_process_callbacks(deviceContext);
+                        Debug.Assert(result == tobii_error_t.TOBII_ERROR_NO_ERROR);
+                    }
                 }
 
                 // Cleanup
@@ -291,11 +315,23 @@ namespace 検証用
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_TrackingStart(object sender, RoutedEventArgs e)
         {
             Task task = new Task(StreamSample.StreamSampleMain);
             task.Start();
         }
 
+        private void MoveOverLay_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Window i in this.OwnedWindows)
+            {
+                Debug.Write(i);
+                i.Visibility = Visibility.Hidden;
+                Debug.Write(i.Content.GetType());
+                //i.Content.Image;
+            }
+            //overlay.Cat.VerticalAlignment = 0;
+            //overlay.Close();
+        }
     }
 }

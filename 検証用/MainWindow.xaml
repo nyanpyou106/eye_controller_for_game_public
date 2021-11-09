@@ -5,20 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:検証用"
         mc:Ignorable="d"
-        Title="MainWindow" Height="546" Width="343">
+        Title="MainWindow" Height="546" Width="343" Loaded="GetDpiFactorAndShowOverLay">
     <Grid>
-        <Button x:Name="ClickExecuteButton" Content="実行" HorizontalAlignment="Center" Margin="0,415,0,25" Click="Button_Click_ClickExecuteButton" FontSize="48" Width="244"/>
-        <Button x:Name="SingleClickButton" Content="シングルクリック" HorizontalAlignment="Center" Height="79" Margin="0,128,0,0" VerticalAlignment="Top" Width="244" FontSize="24" Click="Button_Click_SingleClickButton"/>
-        <Button x:Name="DoubleClickButton" Content="ダブルクリック" HorizontalAlignment="Center" Height="79" Margin="0,220,0,0" VerticalAlignment="Top" Width="244" FontSize="24" Click="Button_Click_DoubleClickButton"/>
-        <TextBox x:Name="y_coordinate" HorizontalAlignment="Left" Height="43" Margin="198,57,0,0" Text="1000" TextWrapping="Wrap" VerticalAlignment="Top" Width="97"/>
-        <TextBox x:Name="x_coordinate" HorizontalAlignment="Left" Height="43" Margin="50,57,0,0" Text="1000" TextWrapping="Wrap" VerticalAlignment="Top" Width="98"/>
-        <Label Content="X座標" HorizontalAlignment="Left" Margin="78,26,0,0" VerticalAlignment="Top"/>
-        <Label Content="Y座標" HorizontalAlignment="Left" Margin="226,26,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.177,0.479"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="26" Margin="18,26,0,0" VerticalAlignment="Top" Width="25" Click="Button_Click"/>
-        <Button x:Name="MoveSmoothlyButton" Content="滑らかに&#xD;&#xA;動かす" HorizontalAlignment="Center" Margin="0,311,0,129" Click="Button_Click_MoveSmoothlyButton" FontSize="24" Width="244"/>
-        <TextBox x:Name="currentX" HorizontalAlignment="Left" Margin="119,10,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="47"/>
-        <TextBox x:Name="currentY" HorizontalAlignment="Left" Margin="174,10,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="47"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="33" Margin="280,10,0,0" VerticalAlignment="Top" Width="49" RenderTransformOrigin="0.041,0.322" Click="Button_Click_1"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="29*"/>
+            <ColumnDefinition Width="297*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="ClickExecuteButton" Content="実行" HorizontalAlignment="Left" Margin="4,415,0,25" Click="Button_Click_ClickExecuteButton" FontSize="48" Width="244" Grid.Column="2"/>
+        <Button x:Name="SingleClickButton" Content="シングルクリック" HorizontalAlignment="Left" Height="79" Margin="4,128,0,0" VerticalAlignment="Top" Width="244" FontSize="24" Click="Button_Click_SingleClickButton" Grid.Column="2"/>
+        <Button x:Name="DoubleClickButton" Content="ダブルクリック" HorizontalAlignment="Left" Height="79" Margin="4,220,0,0" VerticalAlignment="Top" Width="244" FontSize="24" Click="Button_Click_DoubleClickButton" Grid.Column="2"/>
+        <TextBox x:Name="y_coordinate" HorizontalAlignment="Left" Height="43" Margin="152,57,0,0" Text="1000" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" Grid.Column="2"/>
+        <TextBox x:Name="x_coordinate" HorizontalAlignment="Left" Height="43" Margin="4,57,0,0" Text="1000" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" Grid.Column="2"/>
+        <Label Content="X座標" HorizontalAlignment="Left" Margin="32,26,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <Label Content="Y座標" HorizontalAlignment="Left" Margin="180,26,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.177,0.479" Grid.Column="2"/>
+        <Button Content="Button" HorizontalAlignment="Center" Height="26" Margin="0,26,0,0" VerticalAlignment="Top" Width="25" Click="Button_Click" Grid.Column="1"/>
+        <Button x:Name="MoveSmoothlyButton" Content="滑らかに&#xD;&#xA;動かす" HorizontalAlignment="Left" Margin="4,311,0,129" Click="Button_Click_MoveSmoothlyButton" FontSize="24" Width="244" Grid.Column="2"/>
+        <TextBox x:Name="currentX" HorizontalAlignment="Left" Margin="73,10,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" Grid.Column="2"/>
+        <TextBox x:Name="currentY" HorizontalAlignment="Left" Margin="128,10,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" Grid.Column="2"/>
+        <Button x:Name="TrackingStart" Content="Start" HorizontalAlignment="Left" Height="33" Margin="234,10,0,0" VerticalAlignment="Top" Width="49" RenderTransformOrigin="0.041,0.322" Click="Button_Click_TrackingStart" Grid.Column="2"/>
+        <Button x:Name="MoveOverLay" Content="MoveOverLay" Grid.Column="2" HorizontalAlignment="Left" Height="27" Margin="258,493,0,0" VerticalAlignment="Top" Width="29" Click="MoveOverLay_Click"/>
 
     </Grid>
 </Window>

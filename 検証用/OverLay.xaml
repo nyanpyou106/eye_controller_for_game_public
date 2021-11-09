@@ -1,0 +1,13 @@
+﻿<Window x:Class="検証用.OverLay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:検証用"
+        mc:Ignorable="d"
+        Title="OverLay" Height="450" Width="800" Visibility="Visible" WindowStyle="None" AllowsTransparency="True" Background="Transparent" ResizeMode="NoResize" WindowState="Maximized" Topmost="True" ShowInTaskbar="False">
+    <Grid Visibility="Visible">
+        <Image x:Name="Cat" HorizontalAlignment="Center" Height="166" VerticalAlignment="Center" Width="301" Source="/testpicture.png"/>
+
+    </Grid>
+</Window>

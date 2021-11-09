@@ -20,3 +20,6 @@ C:\Users\nyanpyou106\Desktop\Program\eye_controller_for_game\検証用\obj\Debug
 C:\Users\nyanpyou106\Desktop\Program\eye_controller_for_game\検証用\obj\Debug\net5.0-windows\ref\検証用.dll
 C:\Users\nyanpyou106\Desktop\Program\eye_controller_for_game\検証用\obj\Debug\net5.0-windows\検証用.pdb
 C:\Users\nyanpyou106\Desktop\Program\eye_controller_for_game\検証用\obj\Debug\net5.0-windows\検証用.genruntimeconfig.cache
+C:\Users\nyanpyou106\Desktop\Program\eye_controller_for_game\検証用\obj\Debug\net5.0-windows\OverLay.g.cs
+C:\Users\nyanpyou106\Desktop\Program\eye_controller_for_game\検証用\obj\Debug\net5.0-windows\OverLay.baml
+C:\Users\nyanpyou106\Desktop\Program\eye_controller_for_game\検証用\obj\Debug\net5.0-windows\App.baml
