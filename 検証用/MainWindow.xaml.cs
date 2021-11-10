@@ -29,14 +29,12 @@ namespace 検証用
         public MainWindow()
         {
             InitializeComponent();
-            //OverLay overlay = new OverLay();
-            //overlay.Show();
         }
 
         // フラグ等の初期化
         public static double Dpi_Factor = 10;
         public string SingleOrDouble = "Single";
-        //OverLay overlay = new OverLay();
+        OverLay overlay = new OverLay();
 
         public void GetDpiFactorAndShowOverLay(object sender, RoutedEventArgs e)
         {
@@ -46,9 +44,9 @@ namespace 検証用
             Window mainwindow = System.Windows.Application.Current.MainWindow;
             Dpi_Factor = PresentationSource.FromVisual(mainwindow).CompositionTarget.TransformFromDevice.M11;
 
-            // オーバーレイ用のウィンドウを表示
-            OverLay overlay = new OverLay();
-            overlay.Owner = mainwindow;
+            // オーバーレイ用のウィンドウをMainWIndowの子に設定
+            overlay.Owner = this;
+            overlay.Show();
         }
 
         public class Win32API{
@@ -323,15 +321,7 @@ namespace 検証用
 
         private void MoveOverLay_Click(object sender, RoutedEventArgs e)
         {
-            foreach (Window i in this.OwnedWindows)
-            {
-                Debug.Write(i);
-                i.Visibility = Visibility.Hidden;
-                Debug.Write(i.Content.GetType());
-                //i.Content.Image;
-            }
-            //overlay.Cat.VerticalAlignment = 0;
-            //overlay.Close();
+            overlay.MoveCat();
         }
     }
 }

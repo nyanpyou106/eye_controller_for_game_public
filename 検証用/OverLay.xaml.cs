@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using System.Diagnostics;
+
 namespace 検証用
 {
     /// <summary>
@@ -22,6 +24,12 @@ namespace 検証用
         public OverLay()
         {
             InitializeComponent();
+        }
+
+        public void MoveCat()
+        {
+            Cat.VerticalAlignment = 0;
+            Debug.Write("a");
         }
     }
 }
