@@ -25,6 +25,7 @@
         <TextBox x:Name="currentY" HorizontalAlignment="Left" Margin="128,10,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" Grid.Column="2"/>
         <Button x:Name="TrackingStart" Content="Start" HorizontalAlignment="Left" Height="33" Margin="234,10,0,0" VerticalAlignment="Top" Width="49" RenderTransformOrigin="0.041,0.322" Click="Button_Click_TrackingStart" Grid.Column="2"/>
         <Button x:Name="MoveOverLay" Content="MoveOverLay" Grid.Column="2" HorizontalAlignment="Left" Height="27" Margin="258,493,0,0" VerticalAlignment="Top" Width="29" Click="MoveOverLay_Click"/>
+        <Button x:Name="DrawCircle" Content="Circle" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="40" Margin="10,480,0,0" VerticalAlignment="Top" Width="31" Click="DrawCircleAndClick_Click"/>
 
     </Grid>
 </Window>

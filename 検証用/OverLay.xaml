@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:検証用"
         mc:Ignorable="d"
-        Title="OverLay" Height="450" Width="800" Visibility="Visible" WindowStyle="None" AllowsTransparency="True" Background="Transparent" ResizeMode="NoResize" WindowState="Maximized" Topmost="True" ShowInTaskbar="False">
-    <Grid Visibility="Visible">
-        <Image x:Name="Cat" HorizontalAlignment="Center" Height="166" VerticalAlignment="Center" Width="301" Source="/testpicture.png"/>
+        Title="OverLay" Height="450" Width="800" Visibility="Visible" WindowStyle="None" AllowsTransparency="True" Background="Transparent" ResizeMode="NoResize" WindowState="Maximized" Topmost="True" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" Cursor="None" IsEnabled="False" Loaded="SetClickTransparent">
+    <Grid x:Name="OverLayGrid" Visibility="Visible">
+        <Image x:Name="Cat" Height="166" VerticalAlignment="Center" Width="301" Source="/testpicture.png" Margin="250,250,0,0" HorizontalAlignment="Left"/>
+        <Canvas x:Name="OverLayCanvas"/>
 
     </Grid>
 </Window>
